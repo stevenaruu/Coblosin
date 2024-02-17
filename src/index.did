@@ -1,0 +1,10 @@
+service: () -> {
+    becomeAdmin: () -> (variant {Ok:record {id:principal; isChoose:bool; name:text; createdAt:nat64; role:text; email:text; updatedAt:nat64; address:text; birth:nat64; phone:text; isRegistered:bool}; Err:record {code:nat16; message:text}});
+    deleteCandidate: (text) -> (variant {Ok:text; Err:record {code:nat16; message:text}});
+    getAllCandidate: () -> (variant {Ok:vec record {id:text; name:text; vote:nat; image:text}; Err:record {code:nat16; message:text}}) query;
+    insertCandidate: (record {name:text; image:text}) -> (variant {Ok:record {id:text; name:text; vote:nat; image:text}; Err:record {code:nat16; message:text}});
+    loginUser: () -> (variant {Ok:record {id:principal; isChoose:bool; name:text; createdAt:nat64; role:text; email:text; updatedAt:nat64; address:text; birth:nat64; phone:text; isRegistered:bool}; Err:record {code:nat16; message:text}});
+    registerUser: (record {name:text; email:text; address:text; birth:nat64; phone:text}) -> (variant {Ok:record {id:principal; isChoose:bool; name:text; createdAt:nat64; role:text; email:text; updatedAt:nat64; address:text; birth:nat64; phone:text; isRegistered:bool}; Err:record {code:nat16; message:text}});
+    updateCandidate: (text, record {name:text; image:text}) -> (variant {Ok:record {id:text; name:text; vote:nat; image:text}; Err:record {code:nat16; message:text}});
+    voteCandidate: (text) -> (variant {Ok:record {id:text; name:text; vote:nat; image:text}; Err:record {code:nat16; message:text}});
+}
