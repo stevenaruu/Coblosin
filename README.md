@@ -9,12 +9,12 @@ This documentation provides an overview of the Decentralized Voting Management S
 
 Follow the steps below to set up and run the project locally.
 
-### Prerequisites
+## Prerequisites
 
 - [Node.js](https://nodejs.org/en/) (v18 or later)
 - [DFX](https://internetcomputer.org/docs/current/developer-docs/getting-started/install/) (v0.15.1 or later)
 
-### Installation
+## Installation
 
 1. Clone this repository:
 ```bash
