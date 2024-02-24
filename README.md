@@ -1,47 +1,53 @@
-# coblosin
+# Coblosin (Decentralized Voting Management System)
 
-Welcome to your first Azle project! This example project will help you to deploy your first canister (application) to the Internet Computer (IC) decentralized cloud. It is a simple getter/setter canister. You can always refer to [The Azle Book](https://demergent-labs.github.io/azle/) for more in-depth documentation.
+This repository is a submission for the [TypeScript Smart Contract 101](https://dacade.org/communities/icp/challenges/256f0a1c-5f4f-495f-a1b3-90559ab3c51f) challenge by the Internet Computer community on [Dacade](https://dacade.org/).
 
-`dfx` is the tool you will use to interact with the IC locally and on mainnet. If you don't already have it installed:
+## Overview
+This documentation provides an overview of the Decentralized Voting Management System, implemented in TypeScript using the Azle framework. The system allows users to vote for existing candidates, and also enables administrators to manage candidates by adding new ones, updating existing candidates, deleting candidates, and querying candidates.
 
+## Getting started
+
+Follow the steps below to set up and run the project locally.
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/en/) (v18 or later)
+- [DFX](https://internetcomputer.org/docs/current/developer-docs/getting-started/install/) (v0.15.1 or later)
+
+### Installation
+
+1. Clone this repository:
 ```bash
-npm run dfx_install
+git clone https://github.com/stevenaruu/Coblosin.git
 ```
 
-Next you will want to start a replica, which is a local instance of the IC that you can deploy your canisters to:
-
+2. Navigate to the project directory:
 ```bash
-npm run replica_start
+cd coblosin
 ```
 
-If you ever want to stop the replica:
-
-```bash
-npm run replica_stop
-```
-
-Now you can deploy your canister locally:
-
+3. Install dependencies
 ```bash
 npm install
-npm run canister_deploy_local
 ```
 
-To call the methods on your canister:
-
+4. Start the IC local development environment
 ```bash
-npm run canister_call_get_message
-npm run canister_call_set_message
+dfx start --background --clean
 ```
 
-If you run the above commands and then call `npm run canister_call_get_message` you should see:
-
+5. Deploy the canisters to the local development environment
 ```bash
-("Hello world!")
+dfx deploy
 ```
 
-Assuming you have [created a cycles wallet](https://internetcomputer.org/docs/current/developer-docs/quickstart/network-quickstart) and funded it with cycles, you can deploy to mainnet like this:
-
-```bash
-npm run canister_deploy_mainnet
-```
+## Functionalities
+The canister is designed with a multi-role system to facilitate various operations. Below are the roles defined within the system and the functionalities assigned to each.
+- **registerUser**: Used for account registration.
+- **loginUser**: Used to log into the account.
+- **getAllCandidate**: Allow users to see all candidates.
+- **voteCandidate**: Allow users to vote candidates.
+- **becomeAdmin**: Allow users to become administrators.
+- **insertCandidate**: Allow administrators to insert candidates.
+- **updateCandidate**: Allow administrators to update candidates.
+- **deleteCandidate**: Allow administrators to delete candidates.
