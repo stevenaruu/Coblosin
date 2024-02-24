@@ -69,6 +69,12 @@ export default Canister({
     becomeAdmin: update([], Result(User, ErrorResponse), () => {
         try {
             const user: User = usersStore.values().filter((user) => user.id.toString() === ic.caller().toString())[0];
+            if (!user) {
+                return Result.Err({
+                    code: 404,
+                    message: "User not exits, please register or login the account first",
+                })
+            }
             const updatetedUser: User = {
                 ...user,
                 updatedAt: ic.time(),
@@ -166,13 +172,6 @@ export default Canister({
 
             if (user) {
                 if (!user.isChoose) {
-                    const updatetedUser: User = {
-                        ...user,
-                        isChoose: true,
-                        updatedAt: ic.time()
-                    };
-                    usersStore.insert(updatetedUser.id, updatetedUser)
-
                     const candidate: Candidate = candidateStore.values().filter((candidate) => candidate.id === candidateId)[0];
                     if (!candidate) {
                         return Result.Err({
@@ -180,10 +179,18 @@ export default Canister({
                             message: "Please choose the exists candidate",
                         })
                     } else {
+                        const updatetedUser: User = {
+                            ...user,
+                            isChoose: true,
+                            updatedAt: ic.time()
+                        };
+                        usersStore.insert(updatetedUser.id, updatetedUser)
+
                         const updateVote: Candidate = {
                             ...candidate,
                             vote: candidate.vote + 1n,
                         };
+
                         candidateStore.insert(candidateId, updateVote);
                         return Result.Ok(updateVote);
                     }
@@ -196,7 +203,7 @@ export default Canister({
                 }
             } else {
                 return Result.Err({
-                    code: 400,
+                    code: 404,
                     message: "User not exits, please register or login the account first",
                 })
             }
@@ -219,4 +226,3 @@ export default Canister({
         }
     })
 });
-
