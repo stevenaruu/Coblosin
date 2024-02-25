@@ -42,7 +42,7 @@ dfx deploy
 ```
 
 ## Functionalities
-The canister is designed with a multi-role system to facilitate various operations. Below are the roles defined within the system and the functionalities assigned to each.
+The canister is designed with a multi-role system to facilitate various operations. Below are the functionalities.
 - **registerUser**: Used for account registration.
 - **loginUser**: Used to log into the account.
 - **getAllCandidate**: Allow users to see all candidates.
